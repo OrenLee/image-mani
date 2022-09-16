@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://image-mani.herokuapp.com'
+  baseUrl: 'https://image-mani.herokuapp.com/'
 };
 //  baseUrl: 'https://img-mani-backend.herokuapp.com'
 /*
