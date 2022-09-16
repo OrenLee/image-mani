@@ -1,0 +1,22 @@
+
+  <mat-toolbar>
+    <button>
+      <span routerLink="/">IMAGE MANi</span>
+    </button>
+
+
+    <span class="nav-spacer"></span>
+    <button *ngIf="!loggedIn" class="icon-spacer" aria-label="sign up" routerLink="/signup">
+      Sign Up
+    </button>
+    <button *ngIf="!loggedIn" class="icon-spacer" aria-label="login" routerLink="/login">
+      Login
+    </button>
+    <button *ngIf="loggedIn" class="icon-spacer" aria-label="MyImages" routerLink="/images">
+      My Images
+    </button>
+    <button *ngIf="loggedIn" class="icon-spacer" (click)="onLogout()">
+      Logout
+    </button>
+  </mat-toolbar>
+

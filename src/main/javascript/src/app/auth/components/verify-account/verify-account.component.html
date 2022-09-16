@@ -1,0 +1,10 @@
+<div class="center">
+  <div *ngIf="!isAccountVerified && !errorVerify">
+    <h4>Verifying Account</h4>
+    <mat-spinner ></mat-spinner>
+  </div>
+  <h1 *ngIf="isAccountVerified && !errorVerify">
+    Account Is Verified
+  </h1>
+  <mat-error *ngIf="errorVerify">Could not verify the account</mat-error>
+</div>

@@ -1,0 +1,26 @@
+<form (submit)="onLogin(form)"  #form="ngForm">
+  <div class="center-container">
+    <h4>Login</h4>
+    <p>
+      <mat-form-field appearance="legacy" class="field"  [floatLabel]="'never'">
+        <mat-label>Enter your email</mat-label>
+        <input matInput name="email" required ngModel>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="legacy" class="field" [floatLabel]="'never'">
+        <mat-label>Enter your password</mat-label>
+        <input matInput name="password" required type="password" ngModel>
+        <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </p>
+
+    <mat-error *ngIf="isEmailVerify" class="error">Email was not verified</mat-error>
+    <mat-error *ngIf="isNoResponse && !isEmailVerify && !isPasswordAndEmailIncorrect" class="error">No response from the server, please try again later.</mat-error>
+    <mat-error *ngIf="isPasswordAndEmailIncorrect" class="error">The email address or password is incorrect</mat-error>
+    <button mat-raised-button color="warn" type="submit">Submit</button>
+    <button id="" mat-button color="accent" (click)="openForgotPasswordDialog($event)">Forgot Password</button>
+  </div>
+</form>
+

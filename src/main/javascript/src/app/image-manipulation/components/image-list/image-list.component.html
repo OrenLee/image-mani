@@ -1,0 +1,8 @@
+<mat-error *ngIf="isNoResponse">No replay from the server, please try again later.</mat-error>
+<div class="image">
+	<div #imageContainer class="icon-remove blue delete" *ngFor="let image of images; let i = index">
+    <img #imageRef (load)="drawImagesToCanvas()" [src]="'data:image/jpeg;base64,' + image.image" hidden>
+    <canvas id="canvas-{{i}}" #canvasList class="thumbnail blog-canvas" (click)="reloadImage(image)"></canvas>
+    <mat-icon class="x-icon" (click)="deleteImage(image.id)">add_circle_outline</mat-icon>
+	</div>
+</div>

@@ -1,0 +1,98 @@
+mat-sidenav-container {
+  height: 580px;
+}
+
+.center-pickup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+mat-sidenav {
+  width: 200px;
+}
+
+.image-preview img {
+  height: 420px;
+}
+
+.image-item {
+  height: 420px;
+  padding: 0;
+}
+
+.image-item-container {
+  height: 520px;
+  display: flex;
+  flex-direction: row;
+}
+
+#preview-container {
+  height: 520px;
+  display: flex;
+  flex-direction: column;
+  background-color: red;
+
+}
+
+#preview-small-image {
+  height: 120px;
+  align-self: center;
+}
+
+image-cropper {
+  max-width: 100%;
+}
+
+.spacer {
+  margin: 4px 8px 0px 8px;
+}
+
+.left-spacer {
+  margin-left: 5px;
+}
+
+.hidden {display: none; }
+
+
+
+canvas {
+  width: 100%;
+  height: 100%;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  transform: scale(0.9);
+}
+
+#copyright{
+  margin: 0px;
+  padding: 0px;
+}
+
+.center-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.buttons-resize {
+  width: 150px !important;
+}
+
+.toogleSidenav {
+  position: absolute;
+  left: -7px;
+  top: 0px;
+  min-width: 1%;
+
+  transform: scale(1);
+  border-bottom-right-radius: 30%;
+  border-top-right-radius: 30%;
+  padding: 7px;
+}

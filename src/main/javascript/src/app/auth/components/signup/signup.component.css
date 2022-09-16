@@ -1,0 +1,22 @@
+
+.center-container {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.field {
+  width: 40vw;
+}
+
+.spinner {
+  height: 5px;
+  width: 5px;
+  margin: 20px;
+}
+
+.errors {
+  margin-bottom: 20px;
+}

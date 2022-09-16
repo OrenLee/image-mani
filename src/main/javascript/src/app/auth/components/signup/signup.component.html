@@ -1,0 +1,36 @@
+<form [formGroup]="form">
+  <div  class="center-container">
+    <h4>Signup</h4>
+    <p>
+      <mat-form-field appearance="legacy" class="field">
+        <mat-label>Enter your email</mat-label>
+        <input matInput  formControlName="email">
+        <mat-error *ngIf="!form.get('passowrd')?.valid && form.get('password')?.touched">Email invalid</mat-error>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="legacy" class="field">
+        <mat-label>Enter your password</mat-label>
+        <input matInput type="password" formControlName="password">
+        <mat-error *ngIf="!form.get('passowrd')?.valid && form.get('password')?.touched">Password invalid</mat-error>
+      </mat-form-field>
+    </p>
+
+    <div class="errors">
+      <mat-error *ngIf="!form.get('password')?.valid && form.get('password')?.touched">
+        Password must contain more than 8 characters, 1 upper case letter, and 1
+        special character
+      </mat-error>
+      <mat-error *ngIf="userAlreadyExists">User With That Email Is Already Exists</mat-error>
+      <mat-error *ngIf="isNoResponse">No response from the server, try again later please</mat-error>
+      <mat-error *ngIf="isVerifyTokenValid">An email was already sent in the last 24h, please verify</mat-error>
+    </div>
+
+
+    <p *ngIf="isEmailSent">Verificatnion was sent to your Email</p>
+    <button mat-raised-button color="warn" type="submit" (click)="onSignup()">Submit</button>
+    <mat-spinner *ngIf="isSignupRequestSent && !isEmailSent && !isNoResponse && !isVerifyTokenValid" class="spinner" [diameter]="50"></mat-spinner>
+
+  </div>
+</form>

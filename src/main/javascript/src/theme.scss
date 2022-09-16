@@ -1,0 +1,27 @@
+@use '@angular/material' as mat;
+
+$my-primary: mat.define-palette(mat.$grey-palette, 900);
+$my-accent: mat.define-palette(mat.$grey-palette, 700);
+
+// The "warn" palette is optional and defaults to red if not specified.
+$my-warn: mat.define-palette(mat.$red-palette);
+
+$my-theme: mat.define-dark-theme((
+ color: (
+   primary: $my-primary,
+   accent: $my-accent,
+   warn: $my-warn,
+ )
+));
+
+
+@include mat.all-component-themes($my-theme);
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

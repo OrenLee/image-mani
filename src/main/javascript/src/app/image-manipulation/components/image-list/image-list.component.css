@@ -1,0 +1,60 @@
+img {
+  height: 300px;
+}
+
+.mat-button {
+  width: 5px;
+
+}
+
+.container {
+  position: relative;
+
+}
+
+img.thumbnail {
+  background: none repeat scroll 0 0 #FFFFFF;
+  margin: 10px;
+}
+
+.image:before {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+    min-height: 150px;
+  }
+
+  .image {
+      -moz-box-sizing: border-box;
+      float: left;
+  }
+
+  .delete {
+    position: relative;
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+
+
+  .x-icon {
+    content: '';
+    position:absolute;
+    top:0;
+    right:0;
+    width: 23px;
+    cursor: pointer;
+  }
+
+  canvas{
+    max-height: 300px;
+    max-width: 300px;
+  }
+
+  mat-error {
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }

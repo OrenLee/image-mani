@@ -1,0 +1,98 @@
+
+<mat-sidenav-container appImageDrag >
+  <mat-sidenav  [mode]="'side'" [(opened)]="openSidenav" #sidenav>
+    <div fxLayout="column">
+      <mat-button-toggle-group (change)="groupEffect($event)" #effectsControl [formControl]="mirrorEffect" name="effects" aria-label="effects" multiple>
+        <mat-button-toggle value="mirror" [checked]="effects.isMirror">Mirror</mat-button-toggle>
+        <mat-button-toggle value="blur" [checked]="effects.isBlur">Blur</mat-button-toggle>
+        <mat-button-toggle value="contrast" [checked]="effects.isContrast">Contrast</mat-button-toggle>
+      </mat-button-toggle-group>
+
+
+      <div fxLayout="column" class="spacer">
+        <span class="left-spacer">Vintage</span>
+        <mat-slider
+          [displayWith]="valueLabel" thumbLabel
+          #sepinaSlider
+          min="0"
+          max="100"
+          step="2"
+          value="0"
+          [(ngModel)]="effects.sepia"
+          (change)="applyImageEffects($event, 'sepia')"
+          (input)="applyImageEffects($event, 'sepia')"
+          ></mat-slider>
+      </div>
+      <div fxLayout="column" class="spacer">
+        <span class="left-spacer">Brightness</span>
+        <mat-slider
+          [displayWith]="doubleValueLabel" thumbLabel
+          #brightnessSlider
+          min="4"
+          max="200"
+          step="2"
+          value="100"
+          End
+          [(ngModel)]="effects.brightness"
+          (change)="applyImageEffects($event, 'brightness')"
+          (input)="applyImageEffects($event, 'brightness')"
+          ></mat-slider>
+      </div>
+      <div fxLayout="column" class="spacer">
+        <span class="left-spacer">Saturation</span>
+        <mat-slider
+          #saturationSlider
+          [displayWith]="doubleValueLabel" thumbLabel
+          min="0"
+          max="200"
+          step="2"
+          value="5"
+          [(ngModel)]="effects.saturation"
+          (change)="applyImageEffects($event, 'saturation')"
+          (input)="applyImageEffects($event, 'saturation')"
+          ></mat-slider>
+      </div>
+      <div fxLayout="row" class="spacer">
+        <div fxFlex="15"></div>
+        <button mat-flat-button (click)="rotateCanvasImage('left')" color="accent" fxFlex="50">
+          <mat-icon>rotate_left</mat-icon>
+        </button>
+
+        <div fxFlex="15"></div>
+        <button mat-flat-button (click)="rotateCanvasImage('right')" color="accent" fxFlex="50">
+          <mat-icon>rotate_right</mat-icon>
+        </button>
+        <div fxFlex="15"></div>
+      </div>
+    </div>
+
+    <div class="center-buttons" >
+      <button class="buttons-resize" *ngIf="imageloaded || imageReloaded" type="button" mat-stroked-button (click)="downloadImage()">Download</button>
+      <button class="buttons-resize" *ngIf="imageloaded || imageReloaded" type="button" mat-stroked-button (click)="fileInput.click()">New Image</button>
+      <button class="buttons-resize" *ngIf="imageloaded || imageReloaded" type="button" mat-stroked-button (click)="resetImage()" color="warn">Reset</button>
+      <button class="buttons-resize" *ngIf="imageReloaded && loggedIn && !isNewImage" type="button" mat-flat-button (click)="updateImage()" color="warn">Upload Changes</button>
+      <button class="buttons-resize" *ngIf="imageloaded && loggedIn" type="button" mat-flat-button (click)="imageUploadCanvas()" color="warn" >Upload</button>
+    </div>
+
+  </mat-sidenav>
+  <mat-sidenav-content appImageDrag (file)="onImageDropped($event)" [ngClass]="{'center-pickup': !croppedEffect}">
+    <button mat-flat-button color="accent"  type="button" (click)="sidenav.toggle()" class='toogleSidenav' [ngClass]="showToggle">
+      <mat-icon>arrow_right_alt</mat-icon>
+    </button>
+    <form [formGroup]="form" fxLayout="row">
+      <input  hidden mat-button type="file" #filePicker (change)="onImageSelected($event)" #fileInput id="fileInput">
+      <button *ngIf="!fileImage" type="button" mat-raised-button (click)="fileInput.click()">Choose/Drag Image</button>
+
+      <div class="main-image">
+        <img #imageRef [src]="originalImage" hidden (load)="imageLoadedDraw()">
+        <canvas #canvas [width]="1" [height]="1">
+        </canvas>
+      </div>
+    </form>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<footer>
+  <mat-icon id="copyright">copyright</mat-icon>
+  Oren Lee
+</footer>
