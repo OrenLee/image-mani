@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   baseUrl: 'https://image-mani.herokuapp.com'
 };
-//  baseUrl: 'https://img-mani-backend.herokuapp.com'
+//  baseUrl: 'https://image-mani.herokuapp.com'
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  baseUrl:'https://image-mani.herokuapp.com'
+  baseUrl:'http://localhost:8080'
 };
 //'http://localhost:8080'
